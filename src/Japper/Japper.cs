@@ -48,4 +48,10 @@ public static class Japper
         services.AddTransient<IProfileActivator, ProfileActivator>();
         return services;
     }
+
+    public static void MapProfiles(this IServiceProvider serviceProvider){
+        IProfileActivator activator = serviceProvider.GetRequiredService<IProfileActivator>();
+        activator.MapProfiles();
+
+    }
 }

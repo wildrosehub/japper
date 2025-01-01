@@ -24,7 +24,8 @@ public class dummy: IProfileSource
         //     opts.UseSHA512();
         //     opts.DisableCaching();
         // });
+        //deneme.MapProfiles();
         return new Profile("", [], "");
     }
-    
+    //ServiceProvider deneme = new ServiceCollection().BuildServiceProvider();
 }
