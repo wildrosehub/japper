@@ -8,8 +8,11 @@ public class Japper
     public void zamazingo(){
         var dum = new dummy();
         ProfileCreator.NewProfile("Something", "sampleJson")
-            .MapField("naber").To(typeof(int))
-            .MapField("zaza").To(typeof(string))
+            .MapArray("asdasd")
+                .MapField("zaza").To(typeof(int))
+                .MapField("topop").To(typeof(string))
+                .Next()
+            .MapField("tomtom").To(typeof(float))
             .Build();
     }
 }

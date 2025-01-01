@@ -19,7 +19,7 @@ public class FieldMapper
 
     public ProfileCreator To(Type type)
     {
-        _creator.Properties.Add(_fieldName, type);
+        _creator.Properties.Add(_fieldName, new (type));
         return _creator;
     }
 }

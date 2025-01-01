@@ -1,26 +1,30 @@
 using System;
+using Japper.Constants;
+using Japper.Profiles;
 
 namespace Japper.Mapping;
 
-public class ArrayMapper : IMapper
+public class ArrayMapper
 {
     private string _arrayName;
+    private ProfileCreator _creator;
+    public Property Property;
 
-    public ArrayMapper(string arrayName){
+    public ArrayMapper(string arrayName, ProfileCreator profileCreator){
         _arrayName = arrayName;
+        _creator = profileCreator;
+
+        Property = new(typeof(Array));
     }
-    public void Each()
+    public ArrayFieldMapper MapField(string fieldName)
     {
-        throw new NotImplementedException();
+        return new ArrayFieldMapper(fieldName, this);
     }
 
-    public void Next()
+    public ProfileCreator Next()
     {
-        throw new NotImplementedException();
+        _creator.Properties.Add(_arrayName, Property);
+        return _creator;
     }
 
-    public void To()
-    {
-        throw new NotImplementedException();
-    }
 }

@@ -7,7 +7,7 @@ public class ProfileCreator
 {
     private string _profileName;
     private string _jsonStructureName;
-    public Dictionary<string, Type> Properties = [];
+    public Dictionary<string, Property> Properties = [];
     public ProfileCreator(string profileName, string jsonStructureName){
         _profileName = profileName;
         _jsonStructureName = jsonStructureName;
@@ -21,7 +21,7 @@ public class ProfileCreator
     }
 
     public ArrayMapper MapArray(string arrayName){
-        return new ArrayMapper(arrayName);
+        return new ArrayMapper(arrayName, this);
     }
     
     public Profile Build(){
