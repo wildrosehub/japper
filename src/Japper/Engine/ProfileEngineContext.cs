@@ -10,12 +10,16 @@ public class ProfileEngineContext : IProfileEngineContext
 {
     internal ConcurrentDictionary<string, Profile> Profiles {get; set;}
 
+    public ProfileEngineContext(){
+        Profiles = [];
+    }
+
     public bool AddProfile(Profile profile){
         return Profiles.TryAdd(profile.Name, profile);
     }
 
     public (Profile, bool) GetProfile(string profileName){
-        bool okay = Profiles.TryGetValue(profileName, out Profile profile);
+        bool okay = Profiles.TryGetValue(profileName, out Profile? profile);
         if (profile is null) okay = false;
         return (profile!, okay);
     }

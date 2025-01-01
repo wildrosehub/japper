@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Nodes;
 using Japper.Mapping;
 
 namespace Japper.Profiles;
@@ -7,10 +8,10 @@ public class Profile
 {
     public string Name {get; private set;}
     private string _jsonStructureName;
-    private readonly Dictionary<string,Property> _properties;
+    internal readonly Dictionary<string,Property> Properties;
 
     public Profile(string profileName, Dictionary<string,Property> properties, string jsonStructureName){
-        _properties = properties;
+        Properties = properties;
         Name = profileName;
         _jsonStructureName = jsonStructureName;
     }

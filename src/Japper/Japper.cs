@@ -11,7 +11,7 @@ namespace Japper;
 
 public static class Japper
 {
-    public void zamazingo(){
+    public static void zamazingo(){
         var dum = new dummy();
         ProfileCreator.NewProfile("Something", "sampleJson")
             .MapArray("asdasd")
@@ -21,7 +21,7 @@ public static class Japper
             .MapField("tomtom").To(typeof(float))
             .Build();
 
-            IJapper japper = new JapperProvider();
+            IJapper japper = new JapperProvider(new ProfileEngineContext());
 
             japper.From<dummy>("jsonFile").GetField<int>("fieldName"); 
             var engine = japper.From<dummy>("");

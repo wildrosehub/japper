@@ -16,7 +16,8 @@ public class ArrayFieldMapper
     }
 
     public ArrayMapper To(Type type){
-        _arrayMapper.Property.InnerProperties?.Add(_fieldName, new (type));
+        int targetNest = _arrayMapper.Property.NestLevel + 1;
+        _arrayMapper.Property.InnerProperties?.Add(_fieldName, new (type, nestLevel: targetNest));
         return _arrayMapper;
     }
 }
