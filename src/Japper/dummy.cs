@@ -2,6 +2,7 @@ using System;
 using System.Security.Cryptography;
 using Japper.Engine;
 using Japper.Interfaces;
+using Japper.Interfaces.Profiles;
 using Japper.Options;
 using Japper.Profiles;
 using Microsoft.Extensions.DependencyInjection;

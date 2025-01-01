@@ -1,6 +1,7 @@
 using System;
 using Japper.Engine;
 using Japper.Interfaces.Engine;
+using Japper.Interfaces.Profiles;
 
 namespace Japper.Interfaces;
 

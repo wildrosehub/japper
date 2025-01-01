@@ -1,12 +1,13 @@
 using System;
 using System.Text.Json.Nodes;
+using Japper.Interfaces.Engine;
 using Japper.Mapping;
 
 namespace Japper.Engine;
 
-public class JapperEngineMatcher
+public class JapperEngineMatcher : IJapperEngineMatcher
 {
-    internal static T Match<T>(string fieldName, ref Property prop, ref JsonNode node){
-
+    public T Match<T>(string fieldName, ref Property prop, ref JsonNode node){
+        throw new NotImplementedException();
     }
 }

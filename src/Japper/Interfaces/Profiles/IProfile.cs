@@ -1,6 +1,6 @@
 using System;
 
-namespace Japper.Interfaces;
+namespace Japper.Interfaces.Profiles;
 
 public interface IProfile
 {

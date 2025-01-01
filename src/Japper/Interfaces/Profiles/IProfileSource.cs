@@ -2,7 +2,7 @@ using System;
 using Japper.Engine;
 using Japper.Profiles;
 
-namespace Japper.Interfaces;
+namespace Japper.Interfaces.Profiles;
 
 public interface IProfileSource
 {
