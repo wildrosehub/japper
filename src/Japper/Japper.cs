@@ -1,8 +1,10 @@
 using System;
 using System.Linq.Expressions;
+using Japper.Cache;
 using Japper.Engine;
 using Japper.Factories;
 using Japper.Interfaces;
+using Japper.Interfaces.Cache;
 using Japper.Interfaces.Engine;
 using Japper.Interfaces.Factories;
 using Japper.Interfaces.Profiles;
@@ -33,12 +35,17 @@ public static class Japper
     }
 
     public static IServiceCollection UseJapper(this IServiceCollection services, Action<JapperOptions> options){
+        //TODO: find a way to use TryAdd instead of that Add
+        services.AddMemoryCache();
+
         services.AddSingleton<IJapperEngineFactory, JapperEngineFactory>();
         services.AddSingleton<IProfileEngineContext, ProfileEngineContext>();
 
         services.AddScoped<IJapperEngineMatcher, JapperEngineMatcher>();
         services.AddScoped<IJapperEngineValidator, JapperEngineValidator>();
 
+        //cache service
+        services.AddScoped<IPropertyCache, PropertyCache>();
 
         services.AddScoped<IJapper, JapperProvider>();
 

@@ -26,8 +26,8 @@ public class JapperEngine : IJapperEngine
     public async Task<T> GetField<T>(string fieldName)
     {
         //"name:innername:moreinnername:0:omgsoinner"
-        Property prop = _validator.FindFieldOrThrow<T>(_profile, fieldName);
-        return _matcher.Match<T>(fieldName, ref prop, ref node);
+        Property prop = _validator.FindFieldOrThrow<T>(_profile, fieldName); //we can add cache to here
+        return _matcher.Match<T>(fieldName, ref prop, ref node); //we can add cache to here
     }
     public async Task<T[]> GetArray<T>(string arrayName)
     {

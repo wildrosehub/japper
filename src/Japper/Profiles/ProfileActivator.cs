@@ -14,7 +14,7 @@ public class ProfileActivator : IProfileActivator
         _context = context;
         _searcher = searcher;
     }
-    //TODO: we need to call it in a hosted service to call exactly once in an every start
+
     public async void MapProfiles()
     {
         IProfileSource?[] profileSources = _searcher.Search();

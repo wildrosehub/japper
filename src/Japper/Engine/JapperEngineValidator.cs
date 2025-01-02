@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using Japper.Cache;
+using Japper.Interfaces.Cache;
 using Japper.Interfaces.Engine;
 using Japper.Mapping;
 using Japper.Profiles;
@@ -8,6 +10,11 @@ namespace Japper.Engine;
 
 public class JapperEngineValidator : IJapperEngineValidator
 {
+    private readonly IPropertyCache _propertyCache;
+    public JapperEngineValidator(IPropertyCache propertyCache){
+        _propertyCache = propertyCache;
+    }
+
     private bool isPrimitive<T>()
     {
         bool isInt = typeof(T) == typeof(int);
@@ -35,11 +42,18 @@ public class JapperEngineValidator : IJapperEngineValidator
             throw new KeyNotFoundException("Collections can not be found with field getter");
         }
 
+        PropertyCacheKey cacheKey = new(profile.Name, fieldName, typeof(T));
+
+        if(_propertyCache.TryGet(cacheKey, out Property prop)){
+           return prop; 
+        }
+
         KeyValuePair<string, Property> a = profile.Properties.FirstOrDefault(kvp => string.Equals(kvp.Key, fieldName, StringComparison.InvariantCulture) && kvp.Value.PrimitiveType == typeof(T));
         if (!a.Equals(default(KeyValuePair<string, Property>)))
         {
             throw new KeyNotFoundException("There is no such field with that type and name");
         }
+        _propertyCache.Set(cacheKey, a.Value, TimeSpan.FromMinutes(10));
 
         return a.Value;
     }
