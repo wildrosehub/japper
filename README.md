@@ -1,7 +1,7 @@
 # Welcome to Japper
 - The current implementation doesn't complete and solid, so it probably gonna break.
 
-This tool designed to make mappings for json files with fluent api. It can cache too.
+This tool designed to make mappings for json files with fluent api. It uses internally System.Text.Json's JsonNodes. It can cache too.
 The caching is used to save frequently called mapped properties.
 Upcoming features are
 
