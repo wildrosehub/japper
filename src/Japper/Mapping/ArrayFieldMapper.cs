@@ -10,14 +10,12 @@ public class ArrayFieldMapper
         _fieldName = fieldName;
         _arrayMapper = arrayMapper;
 
-        if(_arrayMapper.Property.InnerProperties is null){
-            _arrayMapper.Property.InnerProperties = new ();
-        }
+        _arrayMapper.Property.Properties ??= [];
     }
 
     public ArrayMapper To(Type type){
         int targetNest = _arrayMapper.Property.NestLevel + 1;
-        _arrayMapper.Property.InnerProperties?.Add(_fieldName, new (type, nestLevel: targetNest));
+        _arrayMapper.Property.Properties?.Add(_fieldName, new (type, nestLevel: targetNest));
         return _arrayMapper;
     }
 }

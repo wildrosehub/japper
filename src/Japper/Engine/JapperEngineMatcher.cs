@@ -9,6 +9,11 @@ public class JapperEngineMatcher : IJapperEngineMatcher
 {
     public T Match<T>(string fieldName, ref Property prop, ref JsonNode node){
         //match the json property with nodes from actual json. use NestLevel
-        throw new NotImplementedException();
+        int i = prop.NestLevel;
+        Type a = prop.PrimitiveType;
+
+        
+        
+
     }
 }

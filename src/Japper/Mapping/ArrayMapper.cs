@@ -14,7 +14,7 @@ public class ArrayMapper
         _arrayName = arrayName;
         _creator = profileCreator;
 
-        Property = new(typeof(Array));
+        Property = new(PropertyTypeEnum.Array);
     }
     public ArrayFieldMapper MapField(string fieldName)
     {

@@ -23,6 +23,10 @@ public class ProfileCreator
     public ArrayMapper MapArray(string arrayName){
         return new ArrayMapper(arrayName, this);
     }
+
+    public ObjectMapper MapObject(string objectName){
+        
+    }
     
     public Profile Build(){
         return new Profile(_profileName, Properties, _jsonStructureName);
